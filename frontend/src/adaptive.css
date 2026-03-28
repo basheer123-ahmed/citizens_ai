@@ -1,0 +1,29 @@
+/* Adaptive UI System */
+:root {
+  --adaptive-font-scale: 1;
+  --adaptive-font-weight: 400;
+}
+
+.adaptive-active {
+  --adaptive-font-scale: 1.15;
+  --adaptive-font-weight: 600;
+}
+
+.adaptive-text {
+  font-size: calc(1em * var(--adaptive-font-scale));
+  font-weight: var(--adaptive-font-weight);
+  transition: all 0.3s ease;
+}
+
+/* Specific overrides for common elements */
+.adaptive-active p, 
+.adaptive-active span:not(.font-black), 
+.adaptive-active div:not(.font-black),
+.adaptive-active label {
+  font-size: calc(100% * var(--adaptive-font-scale));
+  font-weight: var(--adaptive-font-weight) !important;
+}
+
+.adaptive-active h1, .adaptive-active h2, .adaptive-active h3 {
+  letter-spacing: -0.01em !important;
+}
