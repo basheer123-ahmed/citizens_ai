@@ -125,7 +125,7 @@ const MyComplaints = ({ user }) => {
         </div>
       </div>
 
-      <div className="card overflow-hidden border-none shadow-3xl shadow-slate-200/50 bg-white/80 backdrop-blur-md rounded-[2.5rem]">
+      <div className="card overflow-hidden border border-slate-900/10 shadow-3xl shadow-slate-200/50 bg-white/80 backdrop-blur-md rounded-[2.5rem]">
         <div className="overflow-x-auto">
           {loading ? (
              <div className="p-20 flex justify-center"><div className="w-8 h-8 border-2 border-primary-200 border-t-primary-600 rounded-full animate-spin"></div></div>
@@ -141,12 +141,12 @@ const MyComplaints = ({ user }) => {
              </div>
           ) : (
             <table className="w-full text-left uppercase">
-              <thead className="bg-[#DCFCE7] text-[#064E3B] border-b border-green-200/50">
+              <thead className="bg-[#DCFCE7] text-[#064E3B] border-b border-slate-900/10">
                 <tr>
-                  <th className="px-8 py-5 text-[10px] font-black tracking-[0.2em]">{t('mc_col_id')}</th>
-                  <th className="px-8 py-5 text-[10px] font-black tracking-[0.2em]">{t('mc_col_cat')}</th>
-                  <th className="px-8 py-5 text-[10px] font-black tracking-[0.2em]">{t('mc_col_status')}</th>
-                  <th className="px-8 py-5 text-[10px] font-black tracking-[0.2em]">{t('mc_col_date')}</th>
+                  <th className="px-8 py-5 text-[10px] font-black tracking-[0.2em] border-r border-slate-900/10">{t('mc_col_id')}</th>
+                  <th className="px-8 py-5 text-[10px] font-black tracking-[0.2em] border-r border-slate-900/10">{t('mc_col_cat')}</th>
+                  <th className="px-8 py-5 text-[10px] font-black tracking-[0.2em] border-r border-slate-900/10">{t('mc_col_status')}</th>
+                  <th className="px-8 py-5 text-[10px] font-black tracking-[0.2em] border-r border-slate-900/10">{t('mc_col_date')}</th>
                   <th className="px-8 py-5 text-right"></th>
                 </tr>
               </thead>
@@ -160,10 +160,10 @@ const MyComplaints = ({ user }) => {
                     className="hover:bg-[#BBF7D0]/30 transition-all cursor-pointer group"
                     transition={{ delay: idx * 0.03 }}
                   >
-                    <td className="px-8 py-6">
+                    <td className="px-8 py-6 border-r border-slate-900/10 border-b border-slate-900/10">
                        <span className="text-[11px] font-black text-slate-900 font-mono tracking-widest">{c.complaintId}</span>
                     </td>
-                    <td className="px-8 py-6">
+                    <td className="px-8 py-6 border-r border-slate-900/10 border-b border-slate-900/10">
                        <div className="flex items-center gap-4">
                          <div className="p-3 bg-white border border-slate-100 rounded-xl shadow-sm text-slate-400 group-hover:bg-[#F8FBF8] group-hover:text-[#0F1C12] transition-all duration-300">
                            <Layers size={14} />
@@ -174,16 +174,16 @@ const MyComplaints = ({ user }) => {
                          </div>
                        </div>
                     </td>
-                    <td className="px-8 py-6">
+                    <td className="px-8 py-6 border-r border-slate-900/10 border-b border-slate-900/10">
                       {getStatusBadge(c.status)}
                     </td>
-                    <td className="px-8 py-6">
+                    <td className="px-8 py-6 border-r border-slate-900/10 border-b border-slate-900/10">
                        <div className="flex items-center gap-2 text-[10px] text-slate-500 font-black tracking-widest">
                           <Calendar size={12} className="text-primary-500" />
                           {new Date(c.createdAt).toLocaleDateString(undefined, { day: '2-digit', month: 'short', year: 'numeric' })}
                        </div>
                     </td>
-                    <td className="px-8 py-6 text-right">
+                    <td className="px-8 py-6 text-right border-b border-slate-900/10">
                        <button 
                          onClick={() => setSelectedComplaint(c)}
                          className="p-3 bg-[#F8FBF8] text-[#0F1C12] rounded-xl hover:bg-primary-600 transition-all opacity-0 group-hover:opacity-100 shadow-2xl shadow-primary-500/20 active:scale-90"

@@ -138,7 +138,7 @@ const StaffDashboard = ({ user }) => {
            </button>
         </div>
 
-        <div className="card rounded-[3rem] border-none shadow-2xl shadow-slate-200/50 overflow-hidden bg-white">
+        <div className="card rounded-[3rem] border border-slate-900/10 shadow-2xl shadow-slate-200/50 overflow-hidden bg-white">
           {loading ? (
              <div className="py-32 flex justify-center"><div className="w-10 h-10 border-4 border-primary-100 border-t-primary-600 rounded-full animate-spin"></div></div>
           ) : complaints.length === 0 ? (
@@ -153,10 +153,10 @@ const StaffDashboard = ({ user }) => {
             <div className="overflow-x-auto">
               <table className="w-full text-left">
                 <thead>
-                  <tr className="bg-[#DCFCE7] text-[#064E3B] border-b border-green-200/50">
-                    <th className="px-8 py-6 text-[10px] font-black tracking-[0.2em] uppercase">Case ID</th>
-                    <th className="px-8 py-6 text-[10px] font-black tracking-[0.2em] uppercase">Priority</th>
-                    <th className="px-8 py-6 text-[10px] font-black tracking-[0.2em] uppercase">Category</th>
+                  <tr className="bg-[#DCFCE7] text-[#064E3B] border-b border-slate-900/10">
+                    <th className="px-8 py-6 text-[10px] font-black tracking-[0.2em] uppercase border-r border-slate-900/10">Case ID</th>
+                    <th className="px-8 py-6 text-[10px] font-black tracking-[0.2em] uppercase border-r border-slate-900/10">Priority</th>
+                    <th className="px-8 py-6 text-[10px] font-black tracking-[0.2em] uppercase border-r border-slate-900/10">Category</th>
                     <th className="px-8 py-6 text-right"></th>
                   </tr>
                 </thead>
@@ -170,16 +170,16 @@ const StaffDashboard = ({ user }) => {
                       className="hover:bg-[#BBF7D0]/30 transition-all duration-300 group cursor-pointer"
                       onClick={() => setSelectedComplaint(c)}
                     >
-                      <td className="px-8 py-6">
+                      <td className="px-8 py-6 border-r border-slate-900/10 border-b border-slate-900/10">
                          <span className="text-xs font-black text-slate-700 font-mono bg-slate-100 px-3 py-1.5 rounded-lg group-hover:bg-primary-100 group-hover:text-primary-700 transition-colors uppercase">{c.complaintId}</span>
                       </td>
-                      <td className="px-8 py-6">
+                      <td className="px-8 py-6 border-r border-slate-900/10 border-b border-slate-900/10">
                         {getPriorityBadge(c.priority)}
                       </td>
-                      <td className="px-8 py-6">
+                      <td className="px-8 py-6 border-r border-slate-900/10 border-b border-slate-900/10">
                          <span className="text-[11px] font-black text-slate-600 uppercase tracking-tight">{c.category}</span>
                       </td>
-                      <td className="px-8 py-6 text-right">
+                      <td className="px-8 py-6 text-right border-b border-slate-900/10">
                          <div className="w-8 h-8 rounded-full bg-slate-50 flex items-center justify-center text-slate-300 group-hover:bg-primary-600 group-hover:text-white transition-all shadow-sm">
                            <ChevronRight size={16} />
                          </div>
@@ -212,15 +212,15 @@ const StaffDashboard = ({ user }) => {
         </span>
       </div>
 
-             <div className="card rounded-[3.5rem] border-none shadow-3xl shadow-slate-200/60 overflow-hidden bg-white">
+             <div className="card rounded-[3.5rem] border border-slate-900/10 shadow-3xl shadow-slate-200/60 overflow-hidden bg-white">
                 <div className="overflow-x-auto">
                   <table className="w-full text-left">
                     <thead>
-                      <tr className="bg-[#DCFCE7] text-[#064E3B] border-b border-green-200/50">
-                        <th className="px-10 py-7 text-[10px] font-black tracking-[0.3em] uppercase opacity-80">Case Ref</th>
-                        <th className="px-10 py-7 text-[10px] font-black tracking-[0.2em] uppercase opacity-80">Classification</th>
-                        <th className="px-10 py-7 text-[10px] font-black tracking-[0.2em] uppercase opacity-80">Priority</th>
-                        <th className="px-10 py-7 text-[10px] font-black tracking-[0.2em] uppercase opacity-80">Grievance Status</th>
+                      <tr className="bg-[#DCFCE7] text-[#064E3B] border-b border-slate-900/10">
+                        <th className="px-10 py-7 text-[10px] font-black tracking-[0.3em] uppercase opacity-80 border-r border-slate-900/10">Case Ref</th>
+                        <th className="px-10 py-7 text-[10px] font-black tracking-[0.2em] uppercase opacity-80 border-r border-slate-900/10">Classification</th>
+                        <th className="px-10 py-7 text-[10px] font-black tracking-[0.2em] uppercase opacity-80 border-r border-slate-900/10">Priority</th>
+                        <th className="px-10 py-7 text-[10px] font-black tracking-[0.2em] uppercase opacity-80 border-r border-slate-900/10">Grievance Status</th>
                         <th className="px-10 py-7 text-right text-[10px] font-black tracking-[0.3em] uppercase opacity-80">Actions</th>
                       </tr>
                     </thead>
@@ -234,19 +234,19 @@ const StaffDashboard = ({ user }) => {
                           className="hover:bg-[#BBF7D0]/30 transition-all cursor-pointer group" 
                           onClick={() => setSelectedComplaint(c)}
                         >
-                          <td className="px-10 py-7">
+                          <td className="px-10 py-7 border-r border-slate-900/10 border-b border-slate-900/10">
                             <span className="text-[13px] font-black font-mono text-slate-900 group-hover:text-primary-600 transition-colors uppercase">{c.complaintId}</span>
                           </td>
-                          <td className="px-10 py-7">
+                          <td className="px-10 py-7 border-r border-slate-900/10 border-b border-slate-900/10">
                             <span className="text-[11px] font-black text-slate-500 uppercase tracking-widest">{c.category}</span>
                           </td>
-                          <td className="px-10 py-7">
+                          <td className="px-10 py-7 border-r border-slate-900/10 border-b border-slate-900/10">
                             <span className={`text-[10px] font-black uppercase tracking-widest ${
                                 c.priority === 'Critical' || c.priority === 'High' ? 'text-rose-500' :
                                 c.priority === 'Medium' ? 'text-amber-500' : 'text-slate-400'
                             }`}>{c.priority}</span>
                           </td>
-                          <td className="px-10 py-7">
+                          <td className="px-10 py-7 border-r border-slate-900/10 border-b border-slate-900/10">
                              <div className="flex items-center gap-2">
                                <span className={`w-2 h-2 rounded-full ${['Resolved', 'Closed'].includes(c.status) ? 'bg-emerald-500' : 'bg-amber-500'} shadow-[0_0_10px_rgba(0,0,0,0.1)]`}></span>
                                <span className={`text-[10px] font-black uppercase tracking-widest ${['Resolved', 'Closed'].includes(c.status) ? 'text-emerald-600' : 'text-amber-600'}`}>
@@ -254,7 +254,7 @@ const StaffDashboard = ({ user }) => {
                                </span>
                              </div>
                           </td>
-                          <td className="px-10 py-7 text-right flex items-center justify-end gap-3 opacity-0 group-hover:opacity-100 transition-opacity">
+                          <td className="px-10 py-7 text-right flex items-center justify-end gap-3 opacity-0 group-hover:opacity-100 transition-opacity border-b border-slate-900/10">
                              <button 
                                onClick={(e) => { e.stopPropagation(); exportReport(c); }}
                                className="p-2.5 bg-blue-50 text-blue-600 rounded-xl hover:bg-green-600 hover:text-white transition-all shadow-sm flex items-center justify-center"

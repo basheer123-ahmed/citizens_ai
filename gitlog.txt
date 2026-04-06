@@ -1,0 +1,8 @@
+*   005bbbc Merge remote-tracking branch 'origin/main' into main (resolved conflicts keeping local changes)
+|\  
+| * 43f304f ???? FINAL FORCE PUSH - COMPLETE PROJECT SYNC
+* a5d77ce feat(citizen): implement comprehensive bilingual localization for remaining dashboard modules
+* af777be Enhance Landing Pages with Full-Width Dark Cosmic 3D Animations
+* 8d2bcd7 Commit 5: Complete Frontend Rebranding & Voice Assistant Stability Fixes
+* aa94d89 Initial project setup with base HTML structure
+* f8487a2 Added basic styling

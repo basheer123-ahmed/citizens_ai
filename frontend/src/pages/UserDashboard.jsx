@@ -116,6 +116,8 @@ const UserDashboard = ({ user }) => {
         </div>
       </header>
 
+      <div className="w-full h-px bg-slate-300"></div>
+
       {/* Stats Grid */}
       <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-4 gap-6">
         {stats.map((stat, i) => (
@@ -160,7 +162,7 @@ const UserDashboard = ({ user }) => {
             </Link>
           </div>
 
-          <div className="bg-gradient-to-r from-white to-[#BBF7D0] overflow-hidden border border-green-200/60 shadow-2xl shadow-green-900/10 hover:shadow-green-900/20 transition-all duration-500 rounded-[2.5rem] relative">
+          <div className="bg-gradient-to-r from-white to-[#BBF7D0] overflow-hidden border border-slate-900/10 shadow-2xl shadow-green-900/10 hover:shadow-green-900/20 transition-all duration-500 rounded-[2.5rem] relative">
             <div className="absolute top-0 right-0 w-64 h-64 bg-green-500 opacity-[0.02] -mr-32 -mt-32 rounded-full"></div>
             {loading ? (
               <div className="p-20 flex justify-center"><div className="w-8 h-8 border-2 border-primary-200 border-t-primary-600 rounded-full animate-spin"></div></div>
@@ -176,11 +178,11 @@ const UserDashboard = ({ user }) => {
               </div>
             ) : (
               <table className="w-full text-left uppercase">
-                <thead className="bg-[#DCFCE7] text-[#064E3B] border-b border-green-200/50">
+                <thead className="bg-[#DCFCE7] text-[#064E3B] border-b border-slate-900/10">
                   <tr>
-                    <th className="px-8 py-5 text-[10px] font-black tracking-[0.2em]">{t('table_complaintId')}</th>
-                    <th className="px-8 py-5 text-[10px] font-black tracking-[0.2em]">{t('table_category')}</th>
-                    <th className="px-8 py-5 text-[10px] font-black tracking-[0.2em]">{t('table_status')}</th>
+                    <th className="px-8 py-5 text-[10px] font-black tracking-[0.2em] border-r border-slate-900/10">{t('table_complaintId')}</th>
+                    <th className="px-8 py-5 text-[10px] font-black tracking-[0.2em] border-r border-slate-900/10">{t('table_category')}</th>
+                    <th className="px-8 py-5 text-[10px] font-black tracking-[0.2em] border-r border-slate-900/10">{t('table_status')}</th>
                     <th className="px-8 py-5 text-right"></th>
                   </tr>
                 </thead>
@@ -194,17 +196,17 @@ const UserDashboard = ({ user }) => {
                       onClick={() => setSelectedComplaint(c)}
                       className="group cursor-default hover:bg-[#BBF7D0]/30 transition-all uppercase"
                     >
-                      <td className="px-8 py-6">
+                      <td className="px-8 py-6 border-r border-slate-900/10 border-b border-slate-900/10">
                         <span className="text-[11px] font-black text-slate-900 font-mono tracking-widest">{c.complaintId}</span>
                       </td>
-                      <td className="px-8 py-6">
+                      <td className="px-8 py-6 border-r border-slate-900/10 border-b border-slate-900/10">
                         <div className="flex flex-col">
                           <span className="text-xs font-black text-slate-800 tracking-tight">{c.category}</span>
                           <span className="text-[9px] font-bold text-slate-400 uppercase tracking-widest">{t('dash_issue_type')}</span>
                         </div>
                       </td>
-                      <td className="px-8 py-6">{getStatusBadge(c.status)}</td>
-                      <td className="px-8 py-6 text-right">
+                      <td className="px-8 py-6 border-r border-slate-900/10 border-b border-slate-900/10">{getStatusBadge(c.status)}</td>
+                      <td className="px-8 py-6 text-right border-b border-slate-900/10">
                          <button className="p-2.5 bg-[#F8FBF8] text-[#0F1C12] rounded-xl hover:bg-primary-600 transition-all opacity-0 group-hover:opacity-100 shadow-xl">
                             <ArrowUpRight size={16} />
                          </button>

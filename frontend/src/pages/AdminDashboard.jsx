@@ -517,19 +517,19 @@ const AdminDashboard = ({ user }) => {
             </div>
             <Link to="/admin/staffs" className="text-[10px] font-black text-slate-400 hover:text-primary-600 uppercase tracking-widest transition-colors">Full Personnel Roster</Link>
           </div>
-          <div className="card-premium overflow-hidden bg-white">
+          <div className="card-premium overflow-hidden bg-white border border-slate-900/10">
             <table className="w-full text-left uppercase">
-              <thead className="bg-[#DCFCE7] text-[#064E3B] border-b border-green-200/50">
+              <thead className="bg-[#DCFCE7] text-[#064E3B] border-b border-slate-900/10">
                 <tr>
-                  <th className="px-8 py-5 text-[10px] font-black tracking-[0.2em]">Personnel</th>
-                  <th className="px-8 py-5 text-[10px] font-black tracking-[0.2em]">Assignment Division</th>
+                  <th className="px-8 py-5 text-[10px] font-black tracking-[0.2em] border-r border-slate-900/10">Personnel</th>
+                  <th className="px-8 py-5 text-[10px] font-black tracking-[0.2em] border-r border-slate-900/10">Assignment Division</th>
                   <th className="px-8 py-5 text-[10px] font-black tracking-[0.2em] text-right">Integrity</th>
                 </tr>
               </thead>
               <tbody className="divide-y divide-green-50/50">
                 {data.officers.slice(0, 4).map((o, idx) => (
                   <tr key={o._id} className="hover:bg-[#BBF7D0]/30 transition-all group">
-                    <td className="px-8 py-5">
+                    <td className="px-8 py-5 border-r border-slate-900/10 border-b border-slate-900/10">
                       <div className="flex items-center gap-4">
                         <div className="w-10 h-10 rounded-2xl bg-[#F8FBF8] flex items-center justify-center text-[10px] font-black text-[#0F1C12] shadow-lg shadow-slate-200/60 group-hover:rotate-6 transition-all">
                           {o.name.charAt(0)}
@@ -537,11 +537,11 @@ const AdminDashboard = ({ user }) => {
                         <span className="text-xs font-black text-slate-800">{o.name}</span>
                       </div>
                     </td>
-                    <td className="px-8 py-5 text-[10px] font-bold text-slate-500 flex flex-col">
+                    <td className="px-8 py-5 text-[10px] font-bold text-slate-500 flex flex-col border-r border-slate-900/10 border-b border-slate-900/10">
                        <span>{o.departmentId?.name || 'GENERAL SERVICES'}</span>
                        <span className="text-primary-500 text-[8px] font-black tracking-widest mt-0.5">{o.rank || 'Junior Staff'}</span>
                     </td>
-                    <td className="px-8 py-5 text-right">
+                    <td className="px-8 py-5 text-right border-b border-slate-900/10">
                        <span className="status-badge status-success">HIGH FIDELITY</span>
                     </td>
                   </tr>
@@ -635,14 +635,14 @@ const AdminDashboard = ({ user }) => {
                   </div>
                </div>
 
-                <div className="card-premium overflow-hidden bg-white/90 backdrop-blur-xl border-slate-100 hover-glow">
+                <div className="card-premium overflow-hidden bg-white/90 backdrop-blur-xl border border-slate-900/10 hover-glow">
                   <table className="w-full text-left uppercase">
-                    <thead className="bg-[#F8FBF8] text-[#0F1C12]">
+                    <thead className="bg-[#F8FBF8] text-[#0F1C12] border-b border-slate-900/10">
                       <tr>
-                        <th className="px-8 py-5 text-[10px] font-black tracking-[0.2em]">CASE ID</th>
-                        <th className="px-8 py-5 text-[10px] font-black tracking-[0.2em]">TYPE / CATEGORY</th>
-                        <th className="px-8 py-5 text-[10px] font-black tracking-[0.2em]">RESOLUTION STATUS</th>
-                        <th className="px-8 py-5 text-[10px] font-black tracking-[0.2em]">ASSIGNED STAFF</th>
+                        <th className="px-8 py-5 text-[10px] font-black tracking-[0.2em] border-r border-slate-900/10">CASE ID</th>
+                        <th className="px-8 py-5 text-[10px] font-black tracking-[0.2em] border-r border-slate-900/10">TYPE / CATEGORY</th>
+                        <th className="px-8 py-5 text-[10px] font-black tracking-[0.2em] border-r border-slate-900/10">RESOLUTION STATUS</th>
+                        <th className="px-8 py-5 text-[10px] font-black tracking-[0.2em] border-r border-slate-900/10">ASSIGNED STAFF</th>
                         <th className="px-8 py-5 text-right"></th>
                       </tr>
                     </thead>
@@ -655,8 +655,8 @@ const AdminDashboard = ({ user }) => {
                           key={c._id} 
                           className="hover:bg-slate-50/80 transition-all group cursor-default"
                         >
-                          <td className="px-8 py-6 font-black text-slate-900 text-[11px] font-mono tracking-widest">{c.complaintId}</td>
-                          <td className="px-8 py-6">
+                          <td className="px-8 py-6 font-black text-slate-900 text-[11px] font-mono tracking-widest border-r border-slate-900/10 border-b border-slate-900/10">{c.complaintId}</td>
+                          <td className="px-8 py-6 border-r border-slate-900/10 border-b border-slate-900/10">
                             <div className="flex flex-col">
                               <span className="text-xs font-black text-slate-700">{c.category}</span>
                               <span className={`text-[9px] font-bold tracking-widest ${
@@ -665,7 +665,7 @@ const AdminDashboard = ({ user }) => {
                               }`}>{c.priority} PRIORITY</span>
                             </div>
                           </td>
-                          <td className="px-8 py-6">
+                          <td className="px-8 py-6 border-r border-slate-900/10 border-b border-slate-900/10">
                             <span className={`status-badge ${
                               c.status === 'Resolved' ? 'status-success' : 
                               c.status === 'In Progress' ? 'status-warning' : 
@@ -674,7 +674,7 @@ const AdminDashboard = ({ user }) => {
                               {c.status}
                             </span>
                           </td>
-                          <td className="px-8 py-6 font-black text-primary-600 text-[10px] tracking-wider">
+                          <td className="px-8 py-6 font-black text-primary-600 text-[10px] tracking-wider border-r border-slate-900/10 border-b border-slate-900/10">
                             {c.assignedOfficerUserId?.name ? (
                               <div className="flex items-center gap-2">
                                 <div className="w-6 h-6 rounded-full bg-primary-100 flex items-center justify-center text-[8px] border border-primary-200 uppercase">
@@ -689,7 +689,7 @@ const AdminDashboard = ({ user }) => {
                               <span className="text-rose-400 bg-rose-50 px-2 py-1 rounded-lg">AWAITING ASSIGNMENT</span>
                             )}
                           </td>
-                          <td className="px-8 py-6 text-right flex items-center justify-end gap-3 opacity-0 group-hover:opacity-100 transition-opacity">
+                          <td className="px-8 py-6 text-right flex items-center justify-end gap-3 opacity-0 group-hover:opacity-100 transition-opacity border-b border-slate-900/10">
                              <button 
                                onClick={() => setAssignModal({ isOpen: true, complaint: c })}
                                className="p-2.5 bg-emerald-50 text-emerald-600 rounded-xl hover:bg-emerald-600 hover:text-white transition-all shadow-sm"
@@ -842,15 +842,15 @@ const AdminDashboard = ({ user }) => {
                   </div>
                </div>
 
-                <div className="card-premium overflow-hidden bg-white">
+                <div className="card-premium overflow-hidden bg-white border border-slate-900/10">
                    <table className="w-full text-left uppercase">
                      <thead className="bg-[#0f172a] text-white">
                        <tr>
-                         <th className="px-10 py-6 text-[10px] font-black tracking-[0.2em]">Personnel ID</th>
-                         <th className="px-10 py-6 text-[10px] font-black tracking-[0.2em]">Authority Branch</th>
-                          <th className="px-10 py-6 text-[10px] font-black tracking-[0.2em]">Operational Status</th>
-                         <th className="px-10 py-6 text-[10px] font-black tracking-[0.2em]">Efficiency KPI</th>
-                         <th className="px-10 py-6 text-[10px] font-black tracking-[0.2em] text-center">Protocol Actions</th>
+                        <th className="px-10 py-6 text-[10px] font-black tracking-[0.2em] border-r border-white/10 text-white/90">Personnel ID</th>
+                        <th className="px-10 py-6 text-[10px] font-black tracking-[0.2em] border-r border-white/10 text-white/90">Authority Branch</th>
+                        <th className="px-10 py-6 text-[10px] font-black tracking-[0.2em] border-r border-white/10 text-white/90">Operational Status</th>
+                        <th className="px-10 py-6 text-[10px] font-black tracking-[0.2em] border-r border-white/10 text-white/90">Efficiency KPI</th>
+                        <th className="px-10 py-6 text-[10px] font-black tracking-[0.2em] text-center">Protocol Actions</th>
                        </tr>
                      </thead>
                      <tbody className="divide-y divide-slate-100">
@@ -868,7 +868,7 @@ const AdminDashboard = ({ user }) => {
                            key={o._id} 
                            className="hover:bg-blue-50/20 transition-all group"
                          >
-                           <td className="px-10 py-7">
+                           <td className="px-10 py-7 border-r border-slate-900/10 border-b border-slate-900/10">
                               <div className="flex items-center gap-5">
                                  <div className="w-12 h-12 rounded-2xl bg-[#F8FBF8] flex items-center justify-center text-xs font-black text-[#0F1C12] shadow-xl shadow-slate-900/10 group-hover:scale-110 group-hover:rotate-3 transition-all">
                                     {o.name.charAt(0)}
@@ -879,7 +879,7 @@ const AdminDashboard = ({ user }) => {
                                  </div>
                               </div>
                            </td>
-                           <td className="px-10 py-7">
+                           <td className="px-10 py-7 border-r border-slate-900/10 border-b border-slate-900/10">
                               {o.departmentId?.name ? (
                                 <div className="flex flex-col gap-1">
                                   <span className="text-[10px] font-black text-blue-600 tracking-widest decoration-2 decoration-blue-100 underline-offset-4">{o.departmentId.name}</span>
@@ -892,12 +892,12 @@ const AdminDashboard = ({ user }) => {
                                 </div>
                               )}
                            </td>
-                           <td className="px-10 py-7">
+                           <td className="px-10 py-7 border-r border-slate-900/10 border-b border-slate-900/10">
                               <span className={`status-badge ${o.status === 'Active' || !o.status ? 'status-success' : 'status-error'} py-1.5 px-3 text-[9px] font-black border-none shadow-sm`}>
                                  {o.status || 'Active'}
                                </span>
                             </td>
-                            <td className="px-10 py-7">
+                            <td className="px-10 py-7 border-r border-slate-900/10 border-b border-slate-900/10">
                                <div className="flex flex-col gap-2 max-w-[140px]">
                                  <div className="flex items-center justify-between mb-1">
                                     <span className="text-[10px] font-black text-slate-400 uppercase tracking-widest">Efficiency KPI Score</span>
@@ -908,7 +908,7 @@ const AdminDashboard = ({ user }) => {
                                  </div>
                               </div>
                            </td>
-                           <td className="px-10 py-7 text-center">
+                           <td className="px-10 py-7 text-center border-b border-slate-900/10">
                               <div className="flex items-center justify-center gap-3">
                                 <button 
                                   onClick={() => setOfficerDeptModal({ isOpen: true, officer: o })}
