@@ -32,4 +32,4 @@ services:
         rewritePath: /index.html
     envVars:
       - key: VITE_API_URL
-        value: https://citizen-ai-backend.onrender.com
+        value: https://citizens-ai.onrender.com
