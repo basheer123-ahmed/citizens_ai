@@ -54,7 +54,9 @@ const GrievanceMap = ({ latitude, longitude, onLocationChange, addressSearch, se
       e.preventDefault();
       if (!addressSearch) return;
       try {
-        const { data } = await axios.get(`https://nominatim.openstreetmap.org/search?format=json&q=${encodeURIComponent(addressSearch)}`);
+        let query = addressSearch;
+        if (!query.toLowerCase().includes('hyderabad')) query += ', Hyderabad, India';
+        const { data } = await axios.get(`https://nominatim.openstreetmap.org/search?format=json&q=${encodeURIComponent(query)}&limit=1`);
         if (data && data.length > 0) {
           const { lat, lon, display_name } = data[0];
           onLocationChange(parseFloat(lat), parseFloat(lon), display_name);

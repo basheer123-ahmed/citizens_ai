@@ -276,7 +276,7 @@ const ComplaintDetailsModal = ({ isOpen, onClose, complaint, role, user, onUpdat
                         <button 
                           onClick={handleUpdateStatus}
                           disabled={submitting || (newStatus === 'Completed' && verificationLoading)}
-                          className="w-full bg-primary-600 text-white py-4 rounded-[1.5rem] text-[10px] font-black uppercase tracking-[0.3em] shadow-xl shadow-primary-500/20 hover:bg-[#F8FBF8] transition-all active:scale-95 disabled:opacity-50 flex items-center justify-center gap-2.5"
+                          className="w-full bg-primary-600 text-white py-4 rounded-[1.5rem] text-[10px] font-black uppercase tracking-[0.3em] shadow-xl shadow-primary-500/20 hover:bg-[#F8FBF8] hover:text-[#0F1C12] transition-all active:scale-95 disabled:opacity-50 flex items-center justify-center gap-2.5"
                         >
                           {submitting ? (
                              <div className="flex items-center gap-2">

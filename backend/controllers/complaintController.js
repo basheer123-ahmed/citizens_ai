@@ -1,5 +1,6 @@
 const Complaint = require('../models/Complaint');
 const User = require('../models/User');
+const axios = require('axios');
 
 // @desc    Create a new complaint
 // @route   POST /api/complaints
@@ -319,26 +320,18 @@ const analyzeComplaint = async (req, res) => {
       "report_description": "The resident reports a total blockage in the local water supply line. Immediate maintenance required to restore service."
     }`;
 
-    const response = await fetch('https://api.groq.com/openai/v1/chat/completions', {
-      method: 'POST',
-      headers: {
-        'Content-Type': 'application/json',
-        'Authorization': `Bearer ${process.env.GROQ_API_KEY}`
-      },
-      body: JSON.stringify({
+    const { data } = await axios.post('https://api.groq.com/openai/v1/chat/completions', {
         model: 'llama-3.3-70b-versatile',
         response_format: { type: "json_object" },
         messages: [{ role: 'user', content: `${systemPrompt}\n\nInput: ${text}` }],
         temperature: 0
-      })
-    });
+      }, {
+        headers: {
+          'Content-Type': 'application/json',
+          'Authorization': `Bearer ${process.env.GROQ_API_KEY}`
+        }
+      });
 
-    if (!response.ok) {
-      const err = await response.text();
-      throw new Error(`Groq API Error: ${err}`);
-    }
-
-    const data = await response.json();
     const result = JSON.parse(data.choices[0].message.content);
     res.json(result);
   } catch (error) {
@@ -400,21 +393,21 @@ const voiceChat = async (req, res) => {
     
     IMPORTANT: Look at the CURRENT INTAKE DATA. If 'location' is 'Awaiting...', you MUST ask for it. If you have it, move to 'description'.`;
 
-    const response = await fetch('https://api.groq.com/openai/v1/chat/completions', {
-      method: 'POST',
-      headers: {
-        'Content-Type': 'application/json',
-        'Authorization': `Bearer ${process.env.GROQ_API_KEY}`
-      },
-      body: JSON.stringify({
-        model: 'llama-3.3-70b-versatile',
+    const { data } = await axios.post('https://api.groq.com/openai/v1/chat/completions', {
+        model: 'openai/gpt-oss-120b',
         response_format: { type: "json_object" },
-        messages: [{ role: 'user', content: `${systemPrompt}\n\nCitizen says: "${text}"` }],
+        messages: [
+          { role: 'system', content: systemPrompt },
+          { role: 'user', content: `Citizen says: "${text}"` }
+        ],
         temperature: 0
-      })
-    });
+      }, {
+        headers: {
+          'Content-Type': 'application/json',
+          'Authorization': `Bearer ${process.env.GROQ_API_KEY}`
+        }
+      });
 
-    const data = await response.json();
     if (data.error) {
       return res.status(500).json({ message: "LLM Failure", error: data.error });
     }

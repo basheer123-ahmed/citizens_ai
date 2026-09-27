@@ -9,7 +9,7 @@ dotenv.config({ path: './.env' });
 
 const seedData = async () => {
   try {
-    const mongoUri = process.env.MONGODB_URI || 'mongodb://localhost:27017/user_grievance_portal';
+    const mongoUri = process.env.MONGODB_URI || process.env.MONGO_URI || 'mongodb://localhost:27017/user_grievance_portal';
     await mongoose.connect(mongoUri);
     console.log('Seed: Connected to MongoDB');
 

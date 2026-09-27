@@ -65,9 +65,9 @@ const StaffDashboard = ({ user }) => {
   }
 
   const stats = [
-    { label: 'Pending Action', count: complaints.filter(c => c.status === 'Submitted').length, icon: <Zap size={20} />, color: 'text-amber-600', bg: 'bg-amber-50' },
-    { label: 'Under Review', count: complaints.filter(c => c.status === 'Under Review').length, icon: <Clock size={20} />, color: 'text-blue-600', bg: 'bg-blue-50' },
-    { label: 'Resolved', count: complaints.filter(c => ['Resolved', 'Closed'].includes(c.status)).length, icon: <CheckCircle2 size={20} />, color: 'text-emerald-600', bg: 'bg-emerald-50' }
+    { label: 'Pending Action', count: complaints.filter(c => ['Submitted', 'Assigned'].includes(c.status)).length, icon: <Zap size={20} />, color: 'text-amber-600', bg: 'bg-amber-50' },
+    { label: 'Under Review', count: complaints.filter(c => ['Under Review', 'Action Initiated', 'Investigation Ongoing'].includes(c.status)).length, icon: <Clock size={20} />, color: 'text-blue-600', bg: 'bg-blue-50' },
+    { label: 'Resolved', count: complaints.filter(c => ['Resolved', 'Closed', 'Completed', 'Feedback Pending'].includes(c.status)).length, icon: <CheckCircle2 size={20} />, color: 'text-emerald-600', bg: 'bg-emerald-50' }
   ];
 
   const getPriorityBadge = (priority) => {

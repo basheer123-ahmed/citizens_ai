@@ -170,7 +170,11 @@ const VoiceAssistantPage = ({ user }) => {
 
   const performGeocode = async (searchLocation) => {
     try {
-      const geoResp = await axios.get(`https://nominatim.openstreetmap.org/search?format=json&q=${encodeURIComponent(searchLocation)}`);
+      let query = searchLocation;
+      if (!query.toLowerCase().includes('hyderabad')) {
+         query += ', Hyderabad, India';
+      }
+      const geoResp = await axios.get(`https://nominatim.openstreetmap.org/search?format=json&q=${encodeURIComponent(query)}&limit=1`);
       if (geoResp.data && geoResp.data.length > 0) {
         const { lat, lon } = geoResp.data[0];
         setGrievanceData(prev => ({
@@ -178,6 +182,8 @@ const VoiceAssistantPage = ({ user }) => {
           latitude: parseFloat(lat),
           longitude: parseFloat(lon)
         }));
+      } else {
+        console.warn("Geocoding returned no results for:", query);
       }
     } catch (err) {
       console.error("Geocoding failed:", err);

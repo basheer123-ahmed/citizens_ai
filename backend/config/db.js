@@ -56,8 +56,19 @@ const connectDB = async () => {
         console.error('3. Internet/DNS: If you get "querySrv" errors, try switching Wi-Fi networks (e.g., mobile hotspot), disabling VPNs, or changing your system DNS to 8.8.8.8.');
         console.error('4. ENV Checking: Ensure your backend reads the .env variables correctly from the root of backend folder.');
         console.error('='.repeat(50) + '\n');
-        
-        process.exit(1); 
+        console.error('\n⚠️ FALLING BACK TO LOCAL MEMORY DATABASE...');
+        try {
+            const { MongoMemoryServer } = require('mongodb-memory-server');
+            const mongoServer = await MongoMemoryServer.create();
+            const memoryUri = mongoServer.getUri();
+            const memoryConn = await mongoose.connect(memoryUri);
+            console.log(`✅ Local In-Memory MongoDB Connected Successfully!`);
+            console.log(`🌐 Host: ${memoryConn.connection.host}`);
+            console.log(`💡 Note: Data will be reset when the server restarts.`);
+        } catch (memError) {
+            console.error('❌ Failed to start Memory Server:', memError);
+            process.exit(1);
+        }
     }
 };
 

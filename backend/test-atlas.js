@@ -2,7 +2,7 @@ const mongoose = require('mongoose');
 require('dotenv').config();
 
 const test = async () => {
-    const uri = process.env.MONGODB_URI;
+    const uri = process.env.MONGO_URI || process.env.MONGODB_URI;
     console.log('Testing connection to:', uri.replace(/\/\/[^:]+:[^@]+@/, '//***:***@'));
     
     try {

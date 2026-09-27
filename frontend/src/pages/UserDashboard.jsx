@@ -62,15 +62,17 @@ const UserDashboard = ({ user }) => {
 
   const stats = [
     { label: t('stat_totalComplaints'), count: complaints.length, icon: <ClipboardList size={20} />, color: 'text-blue-600', bg: 'bg-blue-50' },
-    { label: t('stat_inProgress'), count: complaints.filter(c => c.status === 'In Progress').length, icon: <Clock size={20} />, color: 'text-amber-600', bg: 'bg-amber-50' },
-    { label: t('stat_resolved'), count: complaints.filter(c => c.status === 'Resolved').length, icon: <CheckCircle2 size={20} />, color: 'text-emerald-600', bg: 'bg-emerald-50' },
-    { label: t('stat_actionRequired'), count: complaints.filter(c => c.status === 'Under Review').length, icon: <AlertCircle size={20} />, color: 'text-rose-600', bg: 'bg-rose-50' }
+    { label: t('stat_inProgress'), count: complaints.filter(c => ['In Progress', 'Action Initiated', 'Assigned'].includes(c.status)).length, icon: <Clock size={20} />, color: 'text-amber-600', bg: 'bg-amber-50' },
+    { label: t('stat_resolved'), count: complaints.filter(c => ['Resolved', 'Closed', 'Completed'].includes(c.status)).length, icon: <CheckCircle2 size={20} />, color: 'text-emerald-600', bg: 'bg-emerald-50' },
+    { label: t('stat_actionRequired'), count: complaints.filter(c => ['Under Review', 'Feedback Pending'].includes(c.status)).length, icon: <AlertCircle size={20} />, color: 'text-rose-600', bg: 'bg-rose-50' }
   ];
 
   const getStatusLabel = (status) => {
     const map = {
       'RESOLVED': t('status_resolved'),
       'IN PROGRESS': t('status_inProgress'),
+      'ACTION INITIATED': t('status_inProgress'),
+      'ASSIGNED': t('status_pending'),
       'PENDING': t('status_pending'),
       'UNDER REVIEW': t('status_actionRequired'),
       'ACTION REQUIRED': t('status_actionRequired'),
@@ -80,9 +82,15 @@ const UserDashboard = ({ user }) => {
 
   const getStatusBadge = (status) => {
     switch (status) {
-      case 'Resolved': return <span className="status-badge status-success border-none shadow-sm px-3 py-1 text-[10px] font-black uppercase">{getStatusLabel(status)}</span>;
-      case 'In Progress': return <span className="status-badge status-warning border-none shadow-sm px-3 py-1 text-[10px] font-black uppercase">{getStatusLabel(status)}</span>;
-      case 'Under Review': return <span className="status-badge status-info border-none shadow-sm px-3 py-1 text-[10px] font-black uppercase">{getStatusLabel(status)}</span>;
+      case 'Resolved':
+      case 'Completed': 
+        return <span className="status-badge status-success border-none shadow-sm px-3 py-1 text-[10px] font-black uppercase">{getStatusLabel(status)}</span>;
+      case 'In Progress':
+      case 'Action Initiated':
+      case 'Assigned':
+        return <span className="status-badge status-warning border-none shadow-sm px-3 py-1 text-[10px] font-black uppercase">{getStatusLabel(status)}</span>;
+      case 'Under Review': 
+        return <span className="status-badge status-info border-none shadow-sm px-3 py-1 text-[10px] font-black uppercase">{getStatusLabel(status)}</span>;
       default: return <span className="status-badge bg-slate-100 text-slate-500 border-none shadow-sm px-3 py-1 text-[10px] font-black uppercase">{getStatusLabel(status)}</span>;
     }
   };
