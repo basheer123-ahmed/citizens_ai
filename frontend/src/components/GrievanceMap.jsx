@@ -55,14 +55,17 @@ const GrievanceMap = ({ latitude, longitude, onLocationChange, addressSearch, se
       if (!addressSearch) return;
       try {
         let query = addressSearch;
-        if (!query.toLowerCase().includes('hyderabad')) query += ', Hyderabad, India';
+        if (!query.toLowerCase().includes('india')) query += ', India';
         const { data } = await axios.get(`https://nominatim.openstreetmap.org/search?format=json&q=${encodeURIComponent(query)}&limit=1`);
         if (data && data.length > 0) {
           const { lat, lon, display_name } = data[0];
           onLocationChange(parseFloat(lat), parseFloat(lon), display_name);
+        } else {
+          alert(`Could not find this exact location on the map. Try searching for a broader area (e.g., "Vinayaka Nagar, Anantapur").`);
         }
       } catch (err) {
         console.error('Search failed:', err);
+        alert('Map search failed due to network error.');
       }
     }
   };

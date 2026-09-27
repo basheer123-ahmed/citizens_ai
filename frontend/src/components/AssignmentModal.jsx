@@ -288,7 +288,7 @@ const AssignmentModal = ({ isOpen, onClose, complaint, user, onAssigned }) => {
                 <button
                   onClick={handleAssign}
                   disabled={submitting}
-                  className="bg-primary-600 text-white py-3.5 rounded-xl text-[10px] font-black uppercase tracking-[0.2em] shadow-lg shadow-primary-500/20 hover:bg-[#F8FBF8] transition-all active:scale-95 disabled:opacity-50 flex items-center justify-center gap-2 w-full"
+                  className="bg-primary-600 text-white py-3.5 rounded-xl text-[10px] font-black uppercase tracking-[0.2em] shadow-lg shadow-primary-500/20 hover:bg-primary-700 transition-all active:scale-95 disabled:opacity-50 flex items-center justify-center gap-2 w-full"
                 >
                   {submitting ? (
                     <div className="w-4 h-4 border-2 border-white/30 border-t-white rounded-full animate-spin"></div>

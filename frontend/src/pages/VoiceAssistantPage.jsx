@@ -171,8 +171,8 @@ const VoiceAssistantPage = ({ user }) => {
   const performGeocode = async (searchLocation) => {
     try {
       let query = searchLocation;
-      if (!query.toLowerCase().includes('hyderabad')) {
-         query += ', Hyderabad, India';
+      if (!query.toLowerCase().includes('india')) {
+         query += ', India';
       }
       const geoResp = await axios.get(`https://nominatim.openstreetmap.org/search?format=json&q=${encodeURIComponent(query)}&limit=1`);
       if (geoResp.data && geoResp.data.length > 0) {

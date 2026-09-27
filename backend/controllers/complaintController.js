@@ -321,7 +321,7 @@ const analyzeComplaint = async (req, res) => {
     }`;
 
     const { data } = await axios.post('https://api.groq.com/openai/v1/chat/completions', {
-        model: 'llama-3.3-70b-versatile',
+        model: 'openai/gpt-oss-120b',
         response_format: { type: "json_object" },
         messages: [{ role: 'user', content: `${systemPrompt}\n\nInput: ${text}` }],
         temperature: 0

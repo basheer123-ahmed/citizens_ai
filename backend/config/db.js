@@ -26,6 +26,7 @@ const connectDB = async () => {
         console.log(`✅ MongoDB Atlas Connected Successfully!`);
         console.log(`🌐 Host: ${conn.connection.host}`);
         console.log(`📦 Database: ${conn.connection.name}`);
+        await autoSeedDatabase();
         
     } catch (error) {
         // 3. Robust Error Debugging & Exit
@@ -65,12 +66,37 @@ const connectDB = async () => {
             console.log(`✅ Local In-Memory MongoDB Connected Successfully!`);
             console.log(`🌐 Host: ${memoryConn.connection.host}`);
             console.log(`💡 Note: Data will be reset when the server restarts.`);
+            await autoSeedDatabase();
         } catch (memError) {
             console.error('❌ Failed to start Memory Server:', memError);
             process.exit(1);
         }
     }
 };
+
+async function autoSeedDatabase() {
+    try {
+        const Department = require('../models/Department');
+        const User = require('../models/User');
+        
+        // Only seed if Admin doesn't exist
+        const adminExists = await User.findOne({ email: 'admin@city.gov' });
+        if (adminExists) {
+            console.log(`✅ Seed accounts already exist in DB.`);
+            return;
+        }
+
+        const pwd = await Department.create({ name: 'PWD (Public Works Department)', categoriesHandled: ['Potholes', 'Roads', 'Infrastructure Decay', 'Other'] });
+        const san = await Department.create({ name: 'Sanitation Department', categoriesHandled: ['Garbage Overflow', 'Sanitation Feed', 'Public Health'] });
+        
+        await User.create({ name: 'John Citizen', email: 'john1@gmail.com', password: 'password123', role: 'USER', phone: '9999999999', dob: '1990-01-01' });
+        await User.create({ name: 'Rupesh Officer', email: 'rupesh@city.gov', password: 'password123', role: 'STAFF', phone: '1111111111', dob: '1990-01-01', departmentId: pwd._id });
+        await User.create({ name: 'Admin', email: 'admin@city.gov', password: 'password123', role: 'ADMIN', phone: '2222222222', dob: '1990-01-01' });
+        console.log(`✅ Auto-seeded Departments and Staff into DB!`);
+    } catch (seedErr) {
+        console.error(`❌ Failed to auto-seed:`, seedErr.message);
+    }
+}
 
 module.exports = connectDB;
 
